@@ -27,5 +27,5 @@ def ip_file_validate():
 
     # Closing ther file
     selected_ip_file.close()
-
+   
     return ip_list

@@ -7,7 +7,7 @@ def ip_add_validate(ip_list):
     for ip in ip_list:
         ip = ip.rstrip("\n")
         octet_list = ip.split('.')
-
+      
         # Checking for validity ,so that it does not belong the following:
         # 1.Looopback:127.0.0.0-127.255.255.255
         # 2.Multicast:224.0.0.0-239.255.255.255

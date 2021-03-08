@@ -67,14 +67,21 @@ def ssh_connection(ip,username,password):
             print("\n Something went wrong on the device {} :(\n".format(ip))
             show_op = input("Show more?(y/n) : ")
             if (show_op.lower() == 'y'):
-                opt = str(router_output).split('\r\n')
-                for line in opt:
-                    print(line+"\n")
+                router_output = str(router_output)
+                router_output = router_output.split("\\r\\n")
+                for i, item in enumerate(router_output):
+                    if i>8:
+                        print(item+"\n")
         
         print("\nDone for device {} :)\n".format(ip))
         router_output = str(router_output)
-        router_output = router_output.split("\r\n")
-        print(router_output)
+        router_output = router_output.split("\\r\\n")
+        for i, item in enumerate(router_output):
+            if i==9:
+                print(item+"\n")
+            elif i==10:
+                print(item+"\n")
+
 
         #Closing the connection
         session.close()    
