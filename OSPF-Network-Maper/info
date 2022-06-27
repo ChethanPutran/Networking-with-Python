@@ -1,0 +1,31 @@
+#Configuring the router(set for each router)
+
+snmp-server group python v3 priv
+snmp-server user username password v3 auth sha shapass1234 priv aes aespass1234
+ip routing
+route ospf 1
+network 192.168.1.0 0.0.0.255 area 0
+network 192.168.12.0 0.0.0.255 area 0
+network 192.168.31.0 0.0.0.255 area 0
+network 1.1.1.1 0.0.0.0 area 0
+copy run start
+
+
+
+show ip ospf neighbour
+#Add first router as default gateway of the ubuntu machine
+echo "
+auto eth0
+iface eth0 inet statis
+    address 192.168.0.10
+    network 192.168.0.0
+    netmask 255.255.255.0
+    gateway 192.168.0.1 " > /etc/network/interfaces
+
+#Checking routing table
+show ip route
+
+#Check connection
+ping 192.168.0.10
+
+
